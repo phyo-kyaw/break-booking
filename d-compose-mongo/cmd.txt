@@ -1,0 +1,1 @@
+sudo u=u p=p ef=.env docker-compose up 

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+
 # dbUser is the userName used from applicatoin code to interact with databases and dbPwd is the password for this user.
 # MONGO_INITDB_ROOT_USERNAME & MONGO_INITDB_ROOT_PASSWORD is the config for db admin.
 # admin user is expected to be already created when this script executes. We use it here to authenticate as admin to create
@@ -10,22 +11,35 @@ if [ -n "${MONGO_INITDB_ROOT_USERNAME:-}" ] && [ -n "${MONGO_INITDB_ROOT_PASSWOR
 mongo -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD<<EOF
 db=db.getSiblingDB('bookingDb');
 db=db.getSiblingDB('testDb');
-use tomi;
+use admin;
 db.createUser({
   user:  '$dbUser',
   pwd: '$dbPwd',
   roles: [{
-    role: 'readWrite',
-    db: 'tomi'
+    role: 'readWriteAnyDatabase',
+    db: 'admin'
+  },
+  {
+    role: 'dbAdminAnyDatabase',
+    db: 'admin'
   }]
 });
-use imdb;
+use testDb;
 db.createUser({
   user:  '$dbUser',
   pwd: '$dbPwd',
   roles: [{
     role: 'readWrite',
-    db: 'imdb'
+    db: 'testDb'
+  }]
+});
+use bookingDb;
+db.createUser({
+  user:  '$dbUser',
+  pwd: '$dbPwd',
+  roles: [{
+    role: 'readWrite',
+    db: 'bookingDb'
   }]
 });
 EOF

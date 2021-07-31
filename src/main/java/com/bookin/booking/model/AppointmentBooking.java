@@ -19,7 +19,7 @@ import static java.time.LocalDateTime.parse;
 @Setter
 @NoArgsConstructor
 @ToString
-public class CalendarEvent {
+public class AppointmentBooking {
     @Id
     //@GeneratedValue
     @JsonView(Views.Public.class)
@@ -34,6 +34,18 @@ public class CalendarEvent {
     private LocalDateTime end;
     @JsonView(Views.Public.class)
     private  EventColor color;
+    @JsonView(Views.Public.class)
+    private  String bookingEntityGid;
+    @JsonView(Views.Public.class)
+    private  String bookingEntityName;
+    @JsonView(Views.Public.class)
+    private  String bookerEmail;
+    @JsonView(Views.Public.class)
+    private  String bookerPhone;
+    @JsonView(Views.Public.class)
+    private  String bookerName;
+    @JsonView(Views.Public.class)
+    private  Meta meta;
 
     public void setStart(String start) {
         this.start = parse(start, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

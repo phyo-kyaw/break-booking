@@ -13,8 +13,9 @@ spec:
         app: appt-booking-api
     spec:
       containers:
-        - name: springboot
+        - name: appt-booking-api
           image: pkdocker3383/appt-booking-api:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:

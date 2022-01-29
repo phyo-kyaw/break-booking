@@ -65,7 +65,8 @@ public class ApptBookingController {
         AppointmentBooking appointmentBooking =  apptBookingMapper.constructAppointmentBooking(booking);
         AppointmentBooking appointmentBookingSaved = apptBookingMongoRepository.save(appointmentBooking);
         if(appointmentBookingSaved.getId() != null ){
-            emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
+            //emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
+            System.out.println(appointmentBookingSaved.getBookerEmail());
         }
         return appointmentBookingSaved;
     }

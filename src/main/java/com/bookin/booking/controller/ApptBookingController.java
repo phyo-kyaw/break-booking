@@ -62,10 +62,11 @@ public class ApptBookingController {
 
     @PostMapping
     public AppointmentBooking addBooking(@RequestBody AppointmentBookingData booking) {
+        System.out.println(booking);
         AppointmentBooking appointmentBooking =  apptBookingMapper.constructAppointmentBooking(booking);
         System.out.println(appointmentBooking);
         AppointmentBooking appointmentBookingSaved = apptBookingMongoRepository.save(appointmentBooking);
-        System.out.println(appointmentBooking);
+        System.out.println(appointmentBookingSaved);
         if(appointmentBookingSaved.getId() != null ){
             //emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
             System.out.println(appointmentBookingSaved.getBookerEmail());

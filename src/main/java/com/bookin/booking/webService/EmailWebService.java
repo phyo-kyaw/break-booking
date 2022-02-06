@@ -20,6 +20,7 @@ public class EmailWebService {
     }
 
     public  void sendNotificationEmail(String toAddress, String name) {
+        System.out.println("inside webclient");
         webClient.get().uri("?toAddress={toAddress}&name={name}", toAddress, name);
     }
 

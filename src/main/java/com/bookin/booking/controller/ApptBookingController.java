@@ -6,6 +6,7 @@ import com.bookin.booking.model.AppointmentBookingData;
 import com.bookin.booking.model.Views;
 import com.bookin.booking.repository.ApptBookingMongoRepository;
 import com.bookin.booking.service.EmailService;
+import com.bookin.booking.webService.EmailWebService;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,17 @@ public class ApptBookingController {
 
     EmailService emailService;
 
+    EmailWebService emailWebService;
+
     @Autowired
     public ApptBookingController(ApptBookingMongoRepository apptBookingMongoRepository,
                                  ApptBookingMapper apptBookingMapper,
-                                 EmailService emailService) {
+                                 EmailService emailService,
+                                 EmailWebService emailWebService) {
         this.apptBookingMongoRepository = apptBookingMongoRepository;
         this.apptBookingMapper = apptBookingMapper;
         this.emailService = emailService;
+        this.emailWebService = emailWebService;
     }
 
     @GetMapping
@@ -62,16 +67,17 @@ public class ApptBookingController {
 
     @PostMapping
     public AppointmentBooking addBooking(@RequestBody AppointmentBookingData booking) {
-        System.out.println(booking);
+        System.out.println("booking");
         AppointmentBooking appointmentBooking =  apptBookingMapper.constructAppointmentBooking(booking);
         System.out.println(appointmentBooking);
         AppointmentBooking appointmentBookingSaved = apptBookingMongoRepository.save(appointmentBooking);
         System.out.println(appointmentBookingSaved);
         if(appointmentBookingSaved.getId() != null ){
             //emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
-            System.out.println(appointmentBookingSaved.getBookerEmail());
+            emailWebService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
+            System.out.println("appointmentBooking.getBookerEmail()");
         }
-        return appointmentBookingSaved;
+        return new AppointmentBooking();
     }
 
     @DeleteMapping("/{id}")

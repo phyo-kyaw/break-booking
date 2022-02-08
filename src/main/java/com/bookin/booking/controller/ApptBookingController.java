@@ -74,8 +74,8 @@ public class ApptBookingController {
         System.out.println(appointmentBookingSaved);
         if(appointmentBookingSaved.getId() != null ){
             //emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
-            emailWebService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
-            System.out.println("appointmentBooking.getBookerEmail()");
+            emailWebService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), appointmentBookingSaved.getBookerName());
+            System.out.println(appointmentBooking.getBookerEmail());
         }
         return new AppointmentBooking();
     }

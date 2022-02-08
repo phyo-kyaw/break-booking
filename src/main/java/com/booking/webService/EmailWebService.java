@@ -1,4 +1,4 @@
-package com.bookin.booking.webService;
+package com.booking.webService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

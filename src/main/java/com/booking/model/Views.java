@@ -1,4 +1,4 @@
-package com.bookin.booking.model;
+package com.booking.model;
 
 public class Views {
     public static class Public {

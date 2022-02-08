@@ -1,9 +1,9 @@
-package com.bookin.booking.controller;
+package com.booking.controller;
 
-import com.bookin.booking.mapper.ApptBookingMapper;
-import com.bookin.booking.model.AppointmentBookingEntity;
-import com.bookin.booking.model.Views;
-import com.bookin.booking.repository.ApptBookingEntityMongoRepository;
+import com.booking.mapper.ApptBookingMapper;
+import com.booking.model.AppointmentBookingEntity;
+import com.booking.model.Views;
+import com.booking.repository.ApptBookingEntityMongoRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

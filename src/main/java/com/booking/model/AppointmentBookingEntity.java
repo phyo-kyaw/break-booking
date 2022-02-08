@@ -1,4 +1,4 @@
-package com.bookin.booking.model;
+package com.booking.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
@@ -7,14 +7,9 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.datetime.DateFormatter;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import java.time.LocalDate;
-import java.util.UUID;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static java.time.LocalDateTime.parse;
 

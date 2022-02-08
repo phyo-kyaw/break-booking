@@ -1,6 +1,6 @@
-package com.bookin.booking.repository;
+package com.booking.repository;
 
-import com.bookin.booking.model.AppointmentBooking;
+import com.booking.model.AppointmentBooking;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.time.LocalDateTime;

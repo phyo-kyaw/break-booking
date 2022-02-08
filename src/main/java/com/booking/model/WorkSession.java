@@ -1,4 +1,4 @@
-package com.bookin.booking.model;
+package com.booking.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
@@ -12,12 +12,12 @@ import org.springframework.data.annotation.Id;
 @Setter
 @NoArgsConstructor
 @ToString
-public class DurationM {
+public class WorkSession {
         @Id
         private String id;
         @JsonView(Views.Public.class)
-        private Integer hour;
+        private Integer day;
         @JsonView(Views.Public.class)
-        private Integer minute;
+        private String session;
 
 }

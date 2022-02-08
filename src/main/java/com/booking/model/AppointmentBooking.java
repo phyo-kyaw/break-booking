@@ -1,4 +1,4 @@
-package com.bookin.booking.model;
+package com.booking.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;

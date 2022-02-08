@@ -1,18 +1,19 @@
-package com.bookin.booking.controller;
+package com.booking.controller;
 
-import com.bookin.booking.mapper.ApptBookingMapper;
-import com.bookin.booking.model.AppointmentBooking;
-import com.bookin.booking.model.AppointmentBookingData;
-import com.bookin.booking.model.Views;
-import com.bookin.booking.repository.ApptBookingMongoRepository;
-import com.bookin.booking.service.EmailService;
-import com.bookin.booking.webService.EmailWebService;
+import com.booking.event.BookedNotificationEvent;
+import com.booking.mapper.ApptBookingMapper;
+import com.booking.model.AppointmentBooking;
+import com.booking.model.AppointmentBookingData;
+import com.booking.model.Views;
+import com.booking.producer.BookedNotificationEventProducer;
+import com.booking.repository.ApptBookingMongoRepository;
+import com.booking.service.EmailService;
+import com.booking.webService.EmailWebService;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @CrossOrigin(origins={"http://localhost:4200", "http://localhost",
@@ -32,15 +33,19 @@ public class ApptBookingController {
 
     EmailWebService emailWebService;
 
+    BookedNotificationEventProducer bookedNotificationEventProducer;
+
     @Autowired
     public ApptBookingController(ApptBookingMongoRepository apptBookingMongoRepository,
                                  ApptBookingMapper apptBookingMapper,
                                  EmailService emailService,
-                                 EmailWebService emailWebService) {
+                                 EmailWebService emailWebService,
+                                 BookedNotificationEventProducer bookedNotificationEventProducer) {
         this.apptBookingMongoRepository = apptBookingMongoRepository;
         this.apptBookingMapper = apptBookingMapper;
         this.emailService = emailService;
         this.emailWebService = emailWebService;
+        this.bookedNotificationEventProducer = bookedNotificationEventProducer;
     }
 
     @GetMapping
@@ -76,6 +81,12 @@ public class ApptBookingController {
             //emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
             emailWebService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), appointmentBookingSaved.getBookerName());
             System.out.println(appointmentBooking.getBookerEmail());
+
+            BookedNotificationEvent bookedNotificationEvent = BookedNotificationEvent.builder()
+                    .bookerEmail(appointmentBookingSaved.getBookerEmail())
+                    .bookerName(appointmentBookingSaved.getBookerName()).build();
+
+            bookedNotificationEventProducer.produce("email", bookedNotificationEvent);
         }
         return new AppointmentBooking();
     }

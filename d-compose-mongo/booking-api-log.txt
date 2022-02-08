@@ -7,8 +7,8 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.5.0)
 
-2021-05-24 23:52:35.893  INFO 1 --- [           main] com.bookin.booking.BookingApplication    : Starting BookingApplication v0.0.1-SNAPSHOT using Java 11.0.10 on 09f7eebf01b7 with PID 1 (/app.jar started by root in /)
-2021-05-24 23:52:35.896  INFO 1 --- [           main] com.bookin.booking.BookingApplication    : No active profile set, falling back to default profiles: default
+2021-05-24 23:52:35.893  INFO 1 --- [           main] BookingApplication    : Starting BookingApplication v0.0.1-SNAPSHOT using Java 11.0.10 on 09f7eebf01b7 with PID 1 (/app.jar started by root in /)
+2021-05-24 23:52:35.896  INFO 1 --- [           main] BookingApplication    : No active profile set, falling back to default profiles: default
 2021-05-24 23:52:37.636  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
 2021-05-24 23:52:37.750  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 1 MongoDB repository interfaces.
 2021-05-24 23:52:39.049  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
@@ -18,7 +18,7 @@
 2021-05-24 23:52:39.250  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3203 ms
 2021-05-24 23:52:40.262  INFO 1 --- [           main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[192.168.99.101:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
 2021-05-24 23:52:42.008  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2021-05-24 23:52:42.027  INFO 1 --- [           main] com.bookin.booking.BookingApplication    : Started BookingApplication in 7.487 seconds (JVM running for 8.641)
+2021-05-24 23:52:42.027  INFO 1 --- [           main] BookingApplication    : Started BookingApplication in 7.487 seconds (JVM running for 8.641)
 2021-05-24 23:52:42.032  INFO 1 --- [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
 the application started...
 saving user to the db
@@ -76,7 +76,7 @@ org.springframework.dao.DataAccessResourceFailureException: Timed out after 3000
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.7.jar!/:5.3.7]
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.7.jar!/:5.3.7]
 	at com.sun.proxy.$Proxy60.findAll(Unknown Source) ~[na:na]
-	at com.bookin.booking.BookingApplication.afterTheStart(BookingApplication.java:57) ~[classes!/:0.0.1-SNAPSHOT]
+	at BookingApplication.afterTheStart(BookingApplication.java:57) ~[classes!/:0.0.1-SNAPSHOT]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -98,7 +98,7 @@ org.springframework.dao.DataAccessResourceFailureException: Timed out after 3000
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:352) ~[spring-boot-2.5.0.jar!/:2.5.0]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1336) ~[spring-boot-2.5.0.jar!/:2.5.0]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1325) ~[spring-boot-2.5.0.jar!/:2.5.0]
-	at com.bookin.booking.BookingApplication.main(BookingApplication.java:26) ~[classes!/:0.0.1-SNAPSHOT]
+	at BookingApplication.main(BookingApplication.java:26) ~[classes!/:0.0.1-SNAPSHOT]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]

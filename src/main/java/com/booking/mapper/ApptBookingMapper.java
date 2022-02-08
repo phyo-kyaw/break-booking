@@ -1,7 +1,7 @@
-package com.bookin.booking.mapper;
+package com.booking.mapper;
 
-import com.bookin.booking.model.AppointmentBooking;
-import com.bookin.booking.model.AppointmentBookingData;
+import com.booking.model.AppointmentBooking;
+import com.booking.model.AppointmentBookingData;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

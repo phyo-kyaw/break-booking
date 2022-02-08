@@ -1,7 +1,7 @@
-package com.bookin.booking;
+package com.booking;
 
-import com.bookin.booking.repository.ApptBookingEntityMongoRepository;
-import com.bookin.booking.repository.ApptBookingMongoRepository;
+import com.booking.repository.ApptBookingEntityMongoRepository;
+import com.booking.repository.ApptBookingMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

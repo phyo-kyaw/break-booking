@@ -16,13 +16,23 @@ public class EmailWebService {
     private WebClient webClient;
 
     public EmailWebService(WebClient.Builder webClientBuilder) {
-        webClient = webClientBuilder.build(); //.baseUrl( emailUrl ).build();
+        webClient = webClientBuilder.baseUrl( emailUrl ).build();
     }
 
     public  void sendNotificationEmail(String toAddress, String name) {
         System.out.println("inside webclient");
-        webClient.get().uri("{emailUrl}/sendBookingNotification?toAddress={toAddress}&name={name}", emailUrl, toAddress, name);
+        webClient.post()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/api/email/sendBookingNotification")
+                        .queryParam("toAddress", toAddress)
+                        .queryParam("name", name)
+                        .build() )
+                .retrieve();
+        //webClient.post().uri("{emailUrl}/sendBookingNotification?toAddress={toAddress}&name={name}", emailUrl, toAddress, name);
+        ///verifyCalledUrl("http://192.168.56.102:30088/api/email");
         System.out.println("inside webclient, called!");
+        //System.out.println("{emailUrl}/sendBookingNotification?toAddress={toAddress}&name={name}", emailUrl, toAddress, name);
+
     }
 
 

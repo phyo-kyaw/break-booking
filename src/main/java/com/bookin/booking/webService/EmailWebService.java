@@ -16,12 +16,12 @@ public class EmailWebService {
     private WebClient webClient;
 
     public EmailWebService(WebClient.Builder webClientBuilder) {
-        webClient = webClientBuilder.baseUrl( emailUrl ).build();
+        webClient = webClientBuilder.build(); //.baseUrl( emailUrl ).build();
     }
 
     public  void sendNotificationEmail(String toAddress, String name) {
         System.out.println("inside webclient");
-        webClient.get().uri("/sendBookingNotification?toAddress={toAddress}&name={name}", toAddress, name);
+        webClient.get().uri("{emailUrl}/sendBookingNotification?toAddress={toAddress}&name={name}", emailUrl, toAddress, name);
         System.out.println("inside webclient, called!");
     }
 

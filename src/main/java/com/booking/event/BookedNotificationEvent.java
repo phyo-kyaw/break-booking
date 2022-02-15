@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import java.util.Date;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +16,7 @@ import java.util.Date;
 @SuperBuilder
 public class BookedNotificationEvent extends BaseEvent {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String bookerEmail;
     private String bookerName;

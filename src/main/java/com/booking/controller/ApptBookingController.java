@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins={"http://localhost:4200", "http://localhost",
         "http://192.168.99.101", "http://ec2-3-104-154-174.ap-southeast-2.compute.amazonaws.com",
@@ -83,6 +84,7 @@ public class ApptBookingController {
             System.out.println(appointmentBooking.getBookerEmail());
 
             BookedNotificationEvent bookedNotificationEvent = BookedNotificationEvent.builder()
+                    .id( UUID.randomUUID().toString() )
                     .bookerEmail(appointmentBookingSaved.getBookerEmail())
                     .bookerName(appointmentBookingSaved.getBookerName()).build();
 

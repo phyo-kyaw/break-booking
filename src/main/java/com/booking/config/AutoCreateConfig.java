@@ -16,8 +16,8 @@ import java.util.Map;
 public class AutoCreateConfig {
 
     @Bean
-    public NewTopic libraryEvents(){
-        return TopicBuilder.name("email-events")
+    public NewTopic emailEvents(){
+        return TopicBuilder.name("appt-email-events")
                 .partitions(1)
                 .replicas(1)
                 .build();

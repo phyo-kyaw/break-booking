@@ -15,9 +15,10 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @SuperBuilder
 public class BookedNotificationEvent extends BaseEvent {
-    @Id
+    //@Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    //private String id;
     private String bookerEmail;
     private String bookerName;
+    private int version;
 }

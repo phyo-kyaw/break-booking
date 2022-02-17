@@ -80,7 +80,7 @@ public class ApptBookingController {
         System.out.println(appointmentBookingSaved);
         if(appointmentBookingSaved.getId() != null ){
             //emailService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), "member");
-            emailWebService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), appointmentBookingSaved.getBookerName());
+            //emailWebService.sendNotificationEmail(appointmentBookingSaved.getBookerEmail(), appointmentBookingSaved.getBookerName());
             System.out.println(appointmentBooking.getBookerEmail());
 
             BookedNotificationEvent bookedNotificationEvent = BookedNotificationEvent.builder()

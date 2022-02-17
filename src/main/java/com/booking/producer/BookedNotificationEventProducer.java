@@ -28,16 +28,24 @@ public class BookedNotificationEventProducer implements EventProducer {
     @Autowired
     ObjectMapper objectMapper;
 
+    String value = "";
+
+//    @Override
+//    public void produce(String topic, BaseEvent event) {
+//        this.kafkaTemplate.send(topic, event);
+//    }
+
+
     @Override
-    public void produce(String topic, BaseEvent event) {
-        this.kafkaTemplate.send(topic, event);
-    }
-
-
-    public void sendBookedNotificationEvent(String topic, BaseEvent event) throws JsonProcessingException {
+    public void produce(String topic, BaseEvent event)  {
 
         String key = event.getId();
-        String value = objectMapper.writeValueAsString(event);
+
+        try {
+            value = objectMapper.writeValueAsString(event);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
 
         //ProducerRecord<Long,String> producerRecord = buildProducerRecord(key, value, topic);
 

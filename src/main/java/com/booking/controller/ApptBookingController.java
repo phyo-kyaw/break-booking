@@ -88,7 +88,7 @@ public class ApptBookingController {
                     .bookerEmail(appointmentBookingSaved.getBookerEmail())
                     .bookerName(appointmentBookingSaved.getBookerName()).build();
 
-            bookedNotificationEventProducer.produce("email-events", bookedNotificationEvent);
+            bookedNotificationEventProducer.produce("appt-email-events", bookedNotificationEvent);
         }
         return new AppointmentBooking();
     }
